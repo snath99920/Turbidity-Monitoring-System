@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+d = JSON.parse("{{arr}}");
+var datth = []
+
+for(i=0;i<d.length;i++)
+{
+	if(parseInt(d[i][0])<20191114000000)
+		continue;
+	var tmp = {};
+	tmp["x"] = d[i][0];
+	tmp["y"] = d[i][1];
+	datth.push(tmp);
+}
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Plot of Values"
+	},
+	axisX:{
+		crosshair: {
+			enabled: true,
+		}
+	},
+	axisY: {
+		title: "Value (ntu)",
+		crosshair: {
+			enabled: true
+		}
+	},
+	toolTip:{
+		shared:true
+	},  
+	legend:{
+		cursor:"pointer",
+		verticalAlign: "bottom",
+		horizontalAlign: "left",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data: [{
+		type: "line",
+		showInLegend: true,
+		name: "Value (ntu)",
+		markerType: "square",
+		color: "#F08080",
+		dataPoints: datth
+	}]
+});
+chart.render();
+
+function toogleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else{
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+
+}
+</script>
+<link rel="stylesheet" type="text/css" href="./../static/css/button.css">
+</head>
+<body style="background-color:#002933;">
+<br>
+<button onclick="window.location.href='http://localhost:5000/table'">Click here for Table</button>
+<dir>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+</dir>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="./../static/js/canvasjs.min.js"></script>
+</body>
+</html>

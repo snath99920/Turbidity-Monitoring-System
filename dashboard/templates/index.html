@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ESW Project Team 7</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="./../static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="./../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="./../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<button onclick="window.location.href='http://localhost:5000/graph'" style="border: 2px solid black;">Click here for Plot</button>
+				<div class="table100 ver5 m-b-110">
+					<br>
+					<table data-vertable="ver5">
+						<thead>
+							<tr class="row100 head">
+								<th class="column100 column2" data-column="column2" style="text-align:center">Timestamp</th>
+								<th class="column100 column3" data-column="column3" style="text-align:center">Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<script type="text/javascript">
+								x = JSON.parse("{{arr}}");
+								for(i=0;i<x.length;i++)
+								{
+									document.write('<tr class="row100">');
+									document.write('<td class="column100 column2" data-column="column2" style="text-align:center">' + x[i][0] + '</td>');
+									document.write('<td class="column100 column3" data-column="column3" style="text-align:center">' + x[i][1] + '</td>');
+									document.write('<tr>')
+								}
+							</script>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!--===============================================================================================-->	
+	<script type="javascript" src="./../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script type="javascript" src="./../static/vendor/bootstrap/js/popper.js"></script>
+	<script type="javascript" src="./../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script type="javascript" src="./../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script type="javascript" src="./../static/js/main.js"></script>
+
+</body>
+</html>
